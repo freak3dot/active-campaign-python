@@ -1,7 +1,7 @@
 #!/bin/env python
 
 import os
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 name = 'ActiveCampaign'
 version = '0.1'
@@ -22,9 +22,7 @@ setup(
     url = 'http://github.com/rjohnston/active-campaign-python/',
     license = 'MIT',
     requires = [],
-    py_modules = [
-        "ActiveCampaign",
-    ],
+    packages=find_packages(),
     classifiers = (
           'Development Status :: 4 - Beta',
           'Intended Audience :: Developers',
@@ -32,4 +30,5 @@ setup(
           'Programming Language :: Python',
           'Topic :: Software Development :: Libraries :: Python Modules',
     ),
+    zip_safe=False,
 )
