@@ -59,8 +59,10 @@ class List(ActiveCampaign):
         response = json.loads(urllib2.urlopen(request_url).read())
         return response
 
-    def list_(self, params, post_data = {}):
+    def list_(self, params, post_data):
         request_url = '%s&api_action=list_list&api_output=%s&%s' % (self.url, self.output, params)
+        post_data = urllib.urlencode(post_data)
+        req = urllib2.Request(request_url, post_data)
         response = json.loads(urllib2.urlopen(request_url).read())
         return response
 
