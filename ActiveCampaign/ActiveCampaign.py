@@ -5,6 +5,7 @@ from Connector import Connector
 class ActiveCampaign(Connector):
 
     def __init__(self, url, api_key, api_user = '', api_pass = ''):
+        self.baseurl = url
         self.url = url
         self.api_key = api_key
         Connector.__init__(self, url, api_key, api_user, api_pass)
@@ -42,7 +43,7 @@ class ActiveCampaign(Connector):
         class1 = '%s' % component.capitalize() # IE: "subscriber" becomes "Subscriber"
         source_module = __import__(class1, globals(), locals(), [], -1) # import Subscriber
         class1 = getattr(source_module, class1) # get Subscriber
-        class1 = class1(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY) # Subscriber()
+        class1 = class1(self.baseurl, self.api_key) # Subscriber()
         # subscriber.view()
 
         if method == 'list':
